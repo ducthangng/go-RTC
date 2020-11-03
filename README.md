@@ -17,7 +17,7 @@ All services are completely free of charge. To have an account to sign-in, pleas
 
 ## USAGE
 
-To-be updated
+To-be updated (later)
 
 ---
 
