@@ -103,6 +103,10 @@ Thanks for outstanding resources :x
 
 ### WEB-RTC FOR VIDEO SERVICES
 
+Steps for doing the webRTC in the calling_service
+
+![Img](webRTC.png)
+
 ---
 
 ## TECHNOLOGIES
