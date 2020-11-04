@@ -99,6 +99,8 @@ Thanks for outstanding resources :x
 
 ![Img](clean-arch.png)
 
+---
+
 ## TECHNOLOGIES AND THEORY
 
 ### WEB-RTC FOR VIDEO SERVICES

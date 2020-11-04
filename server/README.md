@@ -19,7 +19,7 @@ List of APIs:
 
 ## ARCHITECTURE
 
-Each service will have one separated folders. In that folder, where will be everything except Entities, as Entities (or Models - the struct of the database) should be define outside in a folder for keeping the Package System of Go.
+Each service will have one separated folder. In that folder, where will be everything except Entities, as Entities (or Models - the struct of the database) should be defined outside in a folder for keeping the "best of Package System".
 
 Therefore, calling_service will consist all the related to calling service.
 
