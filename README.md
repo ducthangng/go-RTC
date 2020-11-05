@@ -103,6 +103,8 @@ Thanks for outstanding resources :x
 
 ## TECHNOLOGIES AND THEORY
 
+Basically, both voice and video call depend on how we stream media between the two clients which are connected to each other. So, there must be something that can do the work of media streaming from one client to another client.
+
 ### WEB-RTC FOR VIDEO SERVICES
 
 Steps for doing the webRTC in the calling_service
