@@ -108,7 +108,6 @@ Basically, both voice and video call depend on how we stream media between the t
 ### WEB-RTC FOR VIDEO SERVICES
 
 Steps for doing the webRTC in the calling_service
-
 ![Img](webRTC.png)
 
 ---
