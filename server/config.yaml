@@ -1,0 +1,15 @@
+server:
+  Host: 127.0.0.1
+  Port: 8080
+  TLSConfig:
+  ReadTimeout: 30
+  ReadHeaderTimeout: 15
+  WriteTimeout: 10
+  IdleTimeout: 10
+  MaxHeaderBytes: 255
+database:
+  Type: mysql
+  User: root
+  Password: ducthang
+  Host: 127.0.0.1:3306
+  Name: services

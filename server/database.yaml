@@ -1,0 +1,5 @@
+Type: mysql
+User: root
+Password: ducthang
+Host: 127.0.0.1:3306
+Name: services

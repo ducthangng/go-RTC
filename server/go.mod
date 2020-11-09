@@ -2,4 +2,7 @@ module gmd
 
 go 1.15
 
-require gorm.io/gorm v1.20.5
+require (
+	gopkg.in/yaml.v2 v2.3.0
+	gorm.io/gorm v1.20.5
+)
