@@ -1,6 +1,7 @@
 package main
 
 import (
+	"gmd/domain/repository"
 	"gmd/external/ginf"
 	"gmd/setting"
 	"log"
@@ -16,6 +17,10 @@ func main() {
 	}
 
 	routers := ginf.Routing()
+	err = repository.Setup(config)
+	if err != nil {
+		log.Fatalf("Error of the system: %v\n", err)
+	}
 
 	s := &http.Server{
 		Handler:           routers,

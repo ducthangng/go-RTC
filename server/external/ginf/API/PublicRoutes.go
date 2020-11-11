@@ -1,9 +1,11 @@
 package API
 
 import (
-	"gmd/entities"
+	"gmd/cmd/e"
+	"gmd/domain/entities"
 	response "gmd/external/ginf/Response"
-	"gmd/primary/delivery/mhttp"
+	"gmd/primary/delivery/primaryhttp"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,9 +15,9 @@ func Authentication(c *gin.Context) {
 	var user entities.User
 
 	c.BindJSON(&user)
-	res, err := mhttp.Authenticate(user)
+	res, err := primaryhttp.Authenticate(user)
 	if err != nil {
-		appG.Response(400, 404, err)
+		appG.Response(http.StatusBadRequest, 404, err)
 		return
 	}
 
@@ -23,5 +25,14 @@ func Authentication(c *gin.Context) {
 }
 
 func Register(c *gin.Context) {
-	c.JSON(200, gin.H{"msg": "hell boiz"})
+	appG := response.Gin{C: c}
+	var user entities.User
+
+	c.ShouldBindJSON(&user)
+	if err := primaryhttp.Register(user); err != nil {
+		appG.Response(http.StatusInternalServerError, e.ERROR_ADD_USER_FAIL, err)
+		return
+	}
+
+	appG.Response(http.StatusOK, e.SUCCESS, nil)
 }
