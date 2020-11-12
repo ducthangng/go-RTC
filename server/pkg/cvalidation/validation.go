@@ -2,11 +2,17 @@ package cvalidation
 
 import (
 	"errors"
-	"gmd/domain/entities"
+
 	"regexp"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 )
+
+//User inherited from entities.User
+type User struct {
+	Username string
+	Password string
+}
 
 func CheckStringNullSpace(value interface{}) error {
 	s, err := value.(string)
@@ -22,7 +28,8 @@ func CheckStringNullSpace(value interface{}) error {
 	return nil
 }
 
-func ValidateUser(user *entities.User) error {
+func ValidateUser(username, password string) error {
+	user := User{Username: username, Password: password}
 	return validation.ValidateStruct(user,
 		validation.Field(&user.Username, validation.Required, validation.Length(5, 100)),
 		validation.Field(&user.Password, validation.Required, validation.Max(regexp.MustCompile("^[0-9]{5}$"))),

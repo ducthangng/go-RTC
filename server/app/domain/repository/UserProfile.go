@@ -2,8 +2,8 @@ package repository
 
 import (
 	"errors"
-	"gmd/cmd/cvalidation"
-	"gmd/domain/entities"
+	"gmd/app/domain/entities"
+	"gmd/pkg/cvalidation"
 )
 
 type User entities.User
@@ -16,7 +16,7 @@ func (u *User) CreateUserProfile() error {
 		Password: u.Password,
 	}
 
-	err := cvalidation.ValidateUser(&user)
+	err := cvalidation.ValidateUser(user.Username, user.Password)
 	if err != nil {
 		return err
 	}
@@ -27,6 +27,18 @@ func (u *User) CreateUserProfile() error {
 	}
 
 	return errors.New("Create not successful")
+}
+
+func (u *User) QueryUserByID(ID int) (User, error) {
+	var user entities.User
+	if err := db.Model(&entities.User{}).Where("ID = ?", ID).First(&user); err != nil {
+		return User{}, errors.New("Query By ID not successful")
+	}
+
+	return User{
+		Username:   user.Username,
+		UserFriend: user.UserFriend,
+	}, nil
 }
 
 func (u *User) QueryUserProfile() (User, error) {

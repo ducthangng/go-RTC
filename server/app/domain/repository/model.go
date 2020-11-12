@@ -2,8 +2,8 @@ package repository
 
 import (
 	"fmt"
-	"gmd/domain/entities"
-	"gmd/setting"
+	"gmd/app/domain/entities"
+	"gmd/deployment/local/setting"
 	"time"
 
 	"gorm.io/driver/mysql"

@@ -15,13 +15,13 @@ func Authentication(c *gin.Context) {
 	var user entities.User
 
 	c.BindJSON(&user)
-	res, err := primaryhttp.Authenticate(user)
+	_, err := primaryhttp.Authenticate(user)
 	if err != nil {
 		appG.Response(http.StatusBadRequest, 404, err)
 		return
 	}
 
-	appG.Response(200, 404, res)
+	appG.Response(http.StatusOK, e.SUCCESS, nil)
 }
 
 func Register(c *gin.Context) {
