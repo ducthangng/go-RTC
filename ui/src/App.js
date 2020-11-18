@@ -1,6 +1,6 @@
 import "./App.css";
-import HomePage from "./screen/homePage";
-import LoginPage from "./screen/loginPage";
+import HomePage from "./view/screen/homePage";
+import LoginPage from "./view/screen/loginPage";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <Switch>
       <Route path="/home" component={HomePage} />
       <Route path="/login" component={LoginPage} />
-      <Redirect from="/" to="/login" />
+      <Redirect from="/" to="/home" />
     </Switch>
   );
 }
