@@ -1,9 +1,12 @@
 package main
 
 import (
+	"gmd/domain/repository"
+	"gmd/external/ginf"
 	"gmd/setting"
 	"log"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -13,22 +16,22 @@ func main() {
 		log.Panicf("Unmarshal: %v", err)
 	}
 
+	routers := ginf.Routing()
+	err = repository.Setup(config)
+	if err != nil {
+		log.Fatalf("Error of the system: %v\n", err)
+	}
+
 	s := &http.Server{
-		Addr:              ":" + config.Port,
-		ReadTimeout:       config.ReadTimeout,
-		ReadHeaderTimeout: config.ReadHeaderTimeout,
-		WriteTimeout:      config.WriteTimeout,
-		IdleTimeout:       config.IdleTimeout,
+		Handler:           routers,
+		Addr:              ":8080",
+		ReadTimeout:       config.ReadTimeout * time.Second,
+		ReadHeaderTimeout: config.ReadHeaderTimeout * time.Second,
+		WriteTimeout:      config.WriteTimeout * time.Second,
+		IdleTimeout:       config.IdleTimeout * time.Second,
 		MaxHeaderBytes:    config.MaxHeaderBytes,
 		// TLS configuration
-		// Handlers
 	}
 
 	s.ListenAndServe()
-	// Setting up configuration for the server.
-
-	//Initialize the routers
-
-	//Activate the server
-
 }
