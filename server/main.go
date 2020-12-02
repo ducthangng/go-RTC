@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gmd/domain/repository"
-	"gmd/external/ginf"
-	"gmd/setting"
+	"gmd/app/domain/repository"
+	"gmd/app/external/ginf"
+	"gmd/deployment/local/setting"
 	"log"
 	"net/http"
 	"time"

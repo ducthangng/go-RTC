@@ -1,10 +1,10 @@
 package API
 
 import (
-	"gmd/cmd/e"
-	"gmd/domain/entities"
-	response "gmd/external/ginf/Response"
-	"gmd/primary/delivery/primaryhttp"
+	"gmd/app/domain/entities"
+	response "gmd/app/external/ginf/Response"
+	"gmd/app/interface/restful/handlers"
+	"gmd/pkg/e"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -15,7 +15,7 @@ func Authentication(c *gin.Context) {
 	var user entities.User
 
 	c.BindJSON(&user)
-	_, err := primaryhttp.Authenticate(user)
+	_, err := handlers.Authenticate(user)
 	if err != nil {
 		appG.Response(http.StatusBadRequest, 404, err)
 		return
@@ -29,7 +29,7 @@ func Register(c *gin.Context) {
 	var user entities.User
 
 	c.ShouldBindJSON(&user)
-	if err := primaryhttp.Register(user); err != nil {
+	if err := handlers.Register(user); err != nil {
 		appG.Response(http.StatusInternalServerError, e.ERROR_ADD_USER_FAIL, err)
 		return
 	}

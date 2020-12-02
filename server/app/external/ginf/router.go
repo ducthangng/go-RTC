@@ -1,7 +1,7 @@
 package ginf
 
 import (
-	"gmd/external/ginf/API"
+	"gmd/app/external/ginf/API"
 
 	"github.com/gin-gonic/gin"
 )
